@@ -1,5 +1,1 @@
-export const Index = () => {
-    return (
-        <div>Index</div>
-    )
-}
+export {HomePage} from "./Home/HomePage";
