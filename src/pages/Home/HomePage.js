@@ -1,7 +1,11 @@
+import {Hero} from "./components/Hero";
+import {FeaturedProducts} from "./components/FeaturedProducts";
+
 export const HomePage = () => {
     return (
         <main>
-            <div>Home</div>
+            <Hero/>
+            <FeaturedProducts/>
         </main>
     )
 }

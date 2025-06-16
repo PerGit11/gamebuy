@@ -1,5 +1,2 @@
-export const Index = () => {
-    return (
-        <div>Index</div>
-    )
-}
+export {Header} from "./Layouts/Header";
+export {Footer} from "./Layouts/Footer";
