@@ -11,7 +11,7 @@ export const ProductCard = ({product}) => {
         }else{
             setPreorder(false);
         }
-    }, [])
+    }, [rating])
 
 
     return (
