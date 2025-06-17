@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useTitle} from "../hooks/useTitle";
 
 export const ProductDetail = () => {
@@ -32,12 +32,19 @@ export const ProductDetail = () => {
     return (
         <main>
             <section>
-                <h1 className="mt-10 mb-5 text-4xl text-center font-bold text-zinc-900 dark:text-slate-200">
-                    {product.name}
-                </h1>
-                <p className="mb-5 text-lg text-center text-zinc-900 dark:text-slate-200">
-                    {product.overview}
-                </p>
+                <div className="relative flex items-center justify-center w-full mt-10 mb-5">
+                    <Link to={"/products"}><button className="absolute left-24 px-4 py-2 bg-zinc-200 text-zinc-800 rounded dark:bg-zinc-700 dark:text-white">← Nazad</button></Link>
+                    <div className="text-center">
+                        <h1 className="text-4xl font-bold text-zinc-900 dark:text-slate-200">
+                            {product.name}
+                        </h1>
+                        <p className="mt-2 text-lg text-zinc-900 dark:text-slate-200">
+                            {product.overview}
+                        </p>
+                    </div>
+                </div>
+
+
                 <div className="flex flex-wrap justify-around items-center">
                     <div className="max-w-3xl my-3">
                         <img className="rounded w-[330px]" src={product.poster} alt={product.name} />

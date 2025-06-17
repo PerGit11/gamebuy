@@ -3,8 +3,10 @@ import { FilterBar } from "./components/FilterBar";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {useTitle} from "../../hooks/useTitle";
+import {useFilter} from "../../context/FilterContext";
 
 export const ProductsList = () => {
+    const {productList, initialProductList} = useFilter();
     const [show, setShow] = useState(false);
     const [allProducts, setAllProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -19,6 +21,7 @@ export const ProductsList = () => {
             const response = await fetch("http://localhost:8000/products");
             const data = await response.json();
             setAllProducts(data);
+            initialProductList(data);
         }
         fetchProducts();
     }, []);
