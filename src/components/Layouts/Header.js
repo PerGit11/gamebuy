@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
+import {use, useEffect, useState} from "react";
+import {Search} from "../Sections/Search";
 
 export const Header = () => {
+    const[darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMode")) || false);
+    const[search, setSearch] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+
+        if(darkMode){
+            document.documentElement.classList.add("dark");
+        }else{
+            document.documentElement.classList.remove("dark");
+        }
+    }, [darkMode])
+
     return (
         <header className="bg-white dark:bg-black border-b max-w-7xl m-auto border-black dark:max-w-full">
             <nav className="max-w-7xl mx-auto">
@@ -13,8 +28,8 @@ export const Header = () => {
             </span>
                     </Link>
                     <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                        <span className="bi bi-palette-fill cursor-pointer text-xl text-gray-700 dark:text-white" />
-                        <span className="bi bi-search cursor-pointer text-xl text-gray-700 dark:text-white mr-5" />
+                        <span onClick={() => setDarkMode(!darkMode)} className="bi bi-palette-fill cursor-pointer text-xl text-gray-700 dark:text-white" />
+                        <span onClick={() => setSearch(!search)} className="bi bi-search cursor-pointer text-xl text-gray-700 dark:text-white mr-5" />
                         <Link to="/cart">
               <span className="relative bi bi-basket2-fill cursor-pointer text-xl text-gray-700 dark:text-white">
                 <span className="absolute -top-1 -right-2 bg-red-700 text-white text-xs rounded-full px-1 py-0.5">
@@ -26,6 +41,7 @@ export const Header = () => {
                     </div>
                 </div>
             </nav>
+            {search && <Search setSearch={setSearch}/>}
         </header>
     );
 };

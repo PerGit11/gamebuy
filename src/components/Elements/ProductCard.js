@@ -16,13 +16,13 @@ export const ProductCard = ({product}) => {
 
     return (
         <div className={"m-3 w-[300px] bg-white rounded-lg border border-zinc-200 shadow-md dark:bg-zinc-800"}>
-            <Link to={`products/${id}`} className={"relative"}>
+            <Link to={`/products/${id}`} className={"relative"}>
                 {best_seller && <span className={"absolute top-4 left-2 px-2 bg-orange-500 bg-opacity-90 text-white rounded"}>Najprodavanija igra</span>}
-                <span className={"absolute top-4 right-2 px-2 bg-blue-400 bg-opacity-90 text-white rounded"}>{platform}</span>
+                {platform==="PS4" ? <span className={"absolute top-4 right-2 px-2 bg-blue-400 bg-opacity-90 text-white rounded"}>{platform}</span> : <span className={"absolute top-4 right-2 px-2 bg-black bg-opacity-90 text-white rounded"}>{platform}</span>}
                 <img className={"rounded-t-lg w-full"} src={poster} alt={""}/>
             </Link>
             <div className={"p-5"}>
-                <Link to={`products/${id}`}>
+                <Link to={`/products/${id}`}>
                     <h5 className={"mb-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white"}>{name}</h5>
                 </Link>
                 <p className={"mb-3 font-normal text-zinc-700 dark:text-zinc-400"}>{overview}</p>
