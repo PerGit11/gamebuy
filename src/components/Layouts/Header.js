@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
-import {use, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Search} from "../Sections/Search";
 
 export const Header = () => {
