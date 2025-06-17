@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {useTitle} from "../hooks/useTitle";
 
 export const ProductDetail = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [preorder, setPreorder] = useState(false);
     const {rating} = product;
+
+    useTitle(`${product.name} -`);
 
     useEffect(() => {
         if(rating===0){
