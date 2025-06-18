@@ -3,7 +3,6 @@ import Logo from "../../assets/images/logo.png";
 import {useEffect, useState} from "react";
 import {Search} from "../Sections/Search";
 import {DropdownLoggedOut} from "../Elements/DropdownLogedOut";
-import {DropdownLoggedIn} from "../Elements/DropdownLogedIn";
 
 export const Header = () => {
     const[darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("darkMode")) || false);
