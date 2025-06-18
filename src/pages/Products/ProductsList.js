@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 
 export const ProductsList = () => {
     const navigate = useNavigate();
-    const {productList, initialProductList, dispatch, state} = useFilter();
+    const {productList, initialProductList, dispatch} = useFilter();
     const [show, setShow] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
 

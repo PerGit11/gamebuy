@@ -1,5 +1,5 @@
-import {createContext, useContext, useReducer} from "react";
-import {FilterReducer} from "../reducers/FilterReducer";
+import { createContext, useContext, useReducer } from "react";
+import { FilterReducer } from "../reducers/FilterReducer";
 
 const filterInitialState = {
     productList: [],
@@ -13,12 +13,10 @@ const filterInitialState = {
 
 export const FilterContext = createContext(filterInitialState);
 
-export const FilterProvider = ({children}) => {
+export const FilterProvider = ({ children }) => {
     const [state, dispatch] = useReducer(FilterReducer, filterInitialState);
 
-    const { productList } = state;
-
-    function initialProductList(products){
+    function initialProductList(products) {
         dispatch({
             type: "PRODUCT_LIST",
             payload: {
@@ -27,46 +25,54 @@ export const FilterProvider = ({children}) => {
         })
     }
 
-    function bestSeller(products){
+    function bestSeller(products) {
         return state.onlyBestsellers ? products.filter(product => product.best_seller === true) : products;
     }
 
-    function inStock(products){
+    function inStock(products) {
         return state.onlyInStock ? products.filter(product => product.in_stock === true) : products;
     }
 
-    function sort(products){
-        if(state.sortBy === "lowtohigh"){
-            return products.sort((a,b) => Number(a.price) - Number(b.price));
+    function sort(products) {
+        if (state.sortBy === "lowtohigh") {
+            return [...products].sort((a, b) => {
+                const priceDiff = Number(a.price) - Number(b.price);
+                if (priceDiff !== 0) return priceDiff;
+                return a.id - b.id; // tie-breaker po id-u
+            });
         }
-        if(state.sortBy === "hightolow"){
-            return products.sort((a,b) => Number(b.price) - Number(a.price));
+        if (state.sortBy === "highttolow") {
+            return [...products].sort((a, b) => {
+                const priceDiff = Number(b.price) - Number(a.price);
+                if (priceDiff !== 0) return priceDiff;
+                return a.id - b.id; // tie-breaker po id-u
+            });
         }
         return products;
     }
 
-    function plat(products){
-        if(state.platform === "PS4"){
+    function plat(products) {
+        if (state.platform === "PS4") {
             return products.filter(product => product.platform === "PS4");
         }
-        if(state.platform === "PS5"){
+        if (state.platform === "PS5") {
             return products.filter(product => product.platform === "PS5");
         }
         return products;
     }
 
-    function rating(products){
-        if(state.ratings === "4STARSABOVE"){
-            return products.filter(product => product.ratings >=4);
+    function rating(products) {
+        if (state.ratings === "4STARSABOVE") {
+            return products.filter(product => product.rating >= 4);
         }
-        if(state.ratings === "3STARSABOVE"){
-            return products.filter(product => product.ratings >=3);
+        if (state.ratings === "3STARSABOVE") {
+            return products.filter(product => product.rating >= 3);
         }
-        if(state.ratings === "2STARSABOVE"){
-            return products.filter(product => product.ratings >=2);
+        if (state.ratings === "2STARSABOVE") {
+            return products.filter(product => product.rating >= 2);
         }
-        if(state.ratings === "1STARSABOVE"){
-            return products.filter(product => product.ratings >=1);
+        if (state.ratings === "1STARSABOVE") {
+            return products.filter(product => product.rating >= 1);
         }
         return products;
     }
@@ -79,6 +85,7 @@ export const FilterProvider = ({children}) => {
         productList: filteredProductList,
         initialProductList,
     }
+
     return (
         <FilterContext.Provider value={value}>
             {children}
@@ -88,7 +95,7 @@ export const FilterProvider = ({children}) => {
 
 export const useFilter = () => {
     const context = useContext(FilterContext);
-    if (context === undefined){
+    if (context === undefined) {
         throw new Error("useFilter must be used within a FilterProvider");
     }
     return context;

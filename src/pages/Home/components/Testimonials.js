@@ -3,7 +3,7 @@ export const Testimonials = () => {
         <section className='my-20'>
             <h1 className="text-2xl text-center font-semibold dark:text-slate-100 mb-5 underline underline-offset-8">Iskustva korisnika</h1>
             <div className="grid mb-8 rounded-lg border border-gray-200 shadow-sm dark:border-zinc-700 md:mb-12 md:grid-cols-2">
-                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white rounded-t-lg border-b border-zinc-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-zinc-800 dark:border-zinc-700">
+                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white border-b border-zinc-200  md:border-r dark:bg-zinc-800 dark:border-zinc-700">
                     <blockquote className="mx-auto mb-4 max-w-2xl text-zinc-500 lg:mb-8 dark:text-zinc-400">
                         <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Veoma lagana kupovina</h3>
                         <p className="my-4 font-light">"U roku od nekoliko minuta izvrsite kupovinu i dobijete digitalnu igru"</p>
@@ -16,7 +16,7 @@ export const Testimonials = () => {
                         </div>
                     </figcaption>
                 </figure>
-                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white rounded-tr-lg border-b border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700">
+                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white border-b border-zinc-200 dark:bg-zinc-800 dark:border-zinc-700">
                     <blockquote className="mx-auto mb-4 max-w-2xl text-zinc-500 lg:mb-8 dark:text-zinc-400">
                         <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Veliko povjerenje</h3>
                         <p className="my-4 font-light">"Veoma brza dostava disk verzije igara uz opciju placanja pouzecem"</p>
@@ -29,7 +29,7 @@ export const Testimonials = () => {
                         </div>
                     </figcaption>
                 </figure>
-                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white rounded-t-lg border-b border-zinc-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-zinc-800 dark:border-zinc-700">
+                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white border-b border-zinc-200 md:border-r dark:bg-zinc-800 dark:border-zinc-700">
                     <blockquote className="mx-auto mb-4 max-w-2xl text-zinc-500 lg:mb-8 dark:text-zinc-400">
                         <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">Fantasticne cijene</h3>
                         <p className="my-4 font-light">"Igre najnovije generacije na redovnim i velikim snizenjima"</p>
@@ -42,7 +42,7 @@ export const Testimonials = () => {
                         </div>
                     </figcaption>
                 </figure>
-                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white rounded-t-lg border-b border-zinc-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-zinc-800 dark:border-zinc-700">
+                <figure className="flex flex-col justify-center items-center p-8 text-center bg-white border-b border-zinc-200 md:border-r dark:bg-zinc-800 dark:border-zinc-700">
                     <blockquote className="mx-auto mb-4 max-w-2xl text-zinc-500 lg:mb-8 dark:text-zinc-400">
                         <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">24/7 podrska</h3>
                         <p className="my-4 font-light">"Odgovor na svaki poziv i na svako pitanje u roku od 15 minuta"</p>

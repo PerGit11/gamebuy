@@ -54,6 +54,8 @@ export const FilterBar = ({ setShow }) => {
 
                             <div className="flex items-center my-1">
                                 <input
+                                    onChange={() => dispatch({type: "SORT_BY", payload: {sortBy: "lowtohigh"}})}
+                                    checked={state.sortBy === "lowtohigh" || false}
                                     id="price-sort-1"
                                     type="radio"
                                     name="price-sort"
@@ -69,6 +71,8 @@ export const FilterBar = ({ setShow }) => {
 
                             <div className="flex items-center my-1">
                                 <input
+                                    onChange={() => dispatch({type: "SORT_BY", payload: {sortBy: "highttolow"}})}
+                                    checked={state.sortBy === "highttolow" || false}
                                     id="price-sort-2"
                                     type="radio"
                                     name="price-sort"
@@ -201,7 +205,7 @@ export const FilterBar = ({ setShow }) => {
 
                             <div key={"best-seller"} className="flex items-center my-1">
                                 <input
-                                    onClick={() =>
+                                    onChange={() =>
                                         dispatch({
                                             type: "BEST_SELLER",
                                             payload: { onlyBestsellers: !state.onlyBestsellers },
@@ -222,7 +226,7 @@ export const FilterBar = ({ setShow }) => {
 
                             <div key={"only-instock"} className="flex items-center my-1">
                                 <input
-                                    onClick={() =>
+                                    onChange={() =>
                                         dispatch({
                                             type: "IN_STOCK",
                                             payload: { onlyInStock: !state.onlyInStock },
