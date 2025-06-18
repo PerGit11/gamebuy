@@ -24,8 +24,7 @@ export const Header = () => {
                     <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src={Logo} className="h-8" alt="GameBuy Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              GameBuy
-            </span>
+              GameBuy</span>
                     </Link>
                     <div className="flex items-center space-x-6 rtl:space-x-reverse">
                         <span onClick={() => setDarkMode(!darkMode)} className="bi bi-palette-fill cursor-pointer text-xl text-gray-700 dark:text-white" />

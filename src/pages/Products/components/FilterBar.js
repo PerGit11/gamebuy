@@ -1,4 +1,8 @@
+import { useFilter } from "../../../context/FilterContext";
+
 export const FilterBar = ({ setShow }) => {
+    const { state, dispatch } = useFilter();
+
     return (
         <section className="filter">
             <div
@@ -47,97 +51,202 @@ export const FilterBar = ({ setShow }) => {
                         {/* Sort By */}
                         <li className="mt-1 mb-5">
                             <p className="font-semibold my-1">Cijena</p>
-                            {["Cijena - Niza ka Vecoj", "Cijena - Veca ka nizoj"].map((label, i) => (
-                                <div key={i} className="flex items-center my-1">
-                                    <input
-                                        id={`price-sort-${i + 1}`}
-                                        type="radio"
-                                        name="price-sort"
-                                        className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
-                                    />
-                                    <label
-                                        htmlFor={`price-sort-${i + 1}`}
-                                        className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
-                                    >
-                                        {label}
-                                    </label>
-                                </div>
-                            ))}
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    id="price-sort-1"
+                                    type="radio"
+                                    name="price-sort"
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="price-sort-1"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    Cijena - Niza ka Vecoj
+                                </label>
+                            </div>
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    id="price-sort-2"
+                                    type="radio"
+                                    name="price-sort"
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="price-sort-2"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    Cijena - Veca ka nizoj
+                                </label>
+                            </div>
                         </li>
 
                         {/* Rating */}
                         <li className="mt-1 mb-5">
                             <span className="font-semibold">Rating</span>
-                            {[
-                                "4 Zvjezdice i vise",
-                                "3 Zvjezdice i vise",
-                                "2 Zvjezdice i vise",
-                                "1 Zvjezdica i vise",
-                            ].map((label, i) => (
-                                <div key={i} className="flex items-center my-1">
-                                    <input
-                                        id={`rating-sort-${i + 1}`}
-                                        type="radio"
-                                        name="rating-sort"
-                                        className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
-                                    />
-                                    <label
-                                        htmlFor={`rating-sort-${i + 1}`}
-                                        className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
-                                    >
-                                        {label}
-                                    </label>
-                                </div>
-                            ))}
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    onChange={() => dispatch({type: "RATINGS", payload: {ratings: "4STARSABOVE"}})}
+                                    checked={state.ratings === "4STARSABOVE" || false}
+                                    id="rating-sort-1"
+                                    type="radio"
+                                    name="rating-sort"
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="rating-sort-1"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    4 Zvjezdice i vise
+                                </label>
+                            </div>
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    onChange={() => dispatch({type: "RATINGS", payload: {ratings: "3STARSABOVE"}})}
+                                    checked={state.ratings === "3STARSABOVE" || false}
+                                    id="rating-sort-2"
+                                    type="radio"
+                                    name="rating-sort"
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="rating-sort-2"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    3 Zvjezdice i vise
+                                </label>
+                            </div>
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    onChange={() => dispatch({type: "RATINGS", payload: {ratings: "2STARSABOVE"}})}
+                                    checked={state.ratings === "2STARSABOVE" || false}
+                                    id="rating-sort-3"
+                                    type="radio"
+                                    name="rating-sort"
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="rating-sort-3"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    2 Zvjezdice i vise
+                                </label>
+                            </div>
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    onChange={() => dispatch({type: "RATINGS", payload: {ratings: "1STARSABOVE"}})}
+                                    checked={state.ratings === "1STARSABOVE" || false}
+                                    id="rating-sort-4"
+                                    type="radio"
+                                    name="rating-sort"
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="rating-sort-4"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    1 Zvjezdica i vise
+                                </label>
+                            </div>
                         </li>
 
-                        {/*PS4 i PS5*/}
+                        {/* Platforma */}
                         <li className="mt-1 mb-5">
                             <p className="font-semibold my-1">Platforma</p>
-                            {["PS4", "PS5"].map((platform, i) => (
-                                <div key={i} className="flex items-center my-1">
-                                    <input
-                                        id={`platform-${platform}`}
-                                        type="radio"
-                                        name="ps-platform"
-                                        className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
-                                    />
-                                    <label
-                                        htmlFor={`platform-${platform}`}
-                                        className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
-                                    >
-                                        {platform} igre
-                                    </label>
-                                </div>
-                            ))}
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    onChange={() => dispatch({type: "PLATFORM", payload: {platform: "PS4"}})}
+                                    id="PS4"
+                                    type="radio"
+                                    name="ps-platform"
+                                    checked={state.platform === "PS4"}
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="PS4"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    PS4 igre
+                                </label>
+                            </div>
+
+                            <div className="flex items-center my-1">
+                                <input
+                                    onChange={() => dispatch({type: "PLATFORM", payload: {platform: "PS5"}})}
+                                    id="PS5"
+                                    type="radio"
+                                    name="ps-platform"
+                                    checked={state.platform === "PS5"}
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor="PS5"
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    PS5 igre
+                                </label>
+                            </div>
                         </li>
 
                         {/* Ostali filteri */}
                         <li className="mt-1 mb-5">
                             <span className="font-semibold">Ostali filteri</span>
-                            {[
-                                { id: "best-seller", label: "Samo najprodavaniji" },
-                                { id: "only-instock", label: "Samo dostupni" },
-                            ].map(({ id, label }) => (
-                                <div key={id} className="flex items-center my-1">
-                                    <input
-                                        id={id}
-                                        type="checkbox"
-                                        className="w-4 h-4 text-yellow-600 bg-zinc-100 rounded border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
-                                    />
-                                    <label
-                                        htmlFor={id}
-                                        className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
-                                    >
-                                        {label}
-                                    </label>
-                                </div>
-                            ))}
+
+                            <div key={"best-seller"} className="flex items-center my-1">
+                                <input
+                                    onClick={() =>
+                                        dispatch({
+                                            type: "BEST_SELLER",
+                                            payload: { onlyBestsellers: !state.onlyBestsellers },
+                                        })
+                                    }
+                                    id={"best-seller"}
+                                    type="checkbox"
+                                    checked={state.onlyBestsellers || false}
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 rounded border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor={"best-seller"}
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    Samo najprodavaniji
+                                </label>
+                            </div>
+
+                            <div key={"only-instock"} className="flex items-center my-1">
+                                <input
+                                    onClick={() =>
+                                        dispatch({
+                                            type: "IN_STOCK",
+                                            payload: { onlyInStock: !state.onlyInStock },
+                                        })
+                                    }
+                                    id={"only-instock"}
+                                    type="checkbox"
+                                    checked={state.onlyInStock || false}
+                                    className="w-4 h-4 text-yellow-600 bg-zinc-100 rounded border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600"
+                                />
+                                <label
+                                    htmlFor={"only-instock"}
+                                    className="ml-2 text-sm font-medium text-zinc-900 dark:text-zinc-300"
+                                >
+                                    Samo dostupni
+                                </label>
+                            </div>
                         </li>
 
                         {/* Dugme za čišćenje filtera */}
                         <li className="mt-1 mb-5 px-1">
                             <button
+                                onClick={() =>
+                                dispatch({ type: "CLEAR_FILTER" })}
                                 type="button"
                                 className="w-full text-zinc-900 bg-white border border-zinc-300 focus:outline-none hover:bg-zinc-100 focus:ring-4 focus:ring-zinc-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-zinc-800 dark:text-white dark:border-zinc-600 dark:hover:bg-zinc-700 dark:hover:border-zinc-600 dark:focus:ring-zinc-700"
                             >

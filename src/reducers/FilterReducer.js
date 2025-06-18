@@ -3,25 +3,51 @@ export const FilterReducer = (state, action) => {
 
     switch (type){
         case "PRODUCT_LIST":
-            return {productList: payload.products}
+            return {
+                ...state,
+                productList: payload.products,
+                initialProductList: payload.products
+            };
 
         case "SORT_BY":
-            return
+            return{
+                ...state,
+                sortBy: payload.sortBy,
+            };
 
         case "RATINGS":
-            return
+            return{
+                ...state,
+                ratings: payload.ratings,
+            };
 
         case "BEST_SELLER":
-            return
+            return{
+                ...state,
+                onlyBestsellers: payload.onlyBestsellers,
+            };
 
         case "IN_STOCK":
-            return
+            return{
+                ...state,
+                onlyInStock: payload.onlyInStock,
+            };
 
         case "PLATFORM":
-            return
+            return{
+                ...state,
+                platform: payload.platform,
+            };
 
         case "CLEAR_FILTER":
-            return
+            return {
+                ...state,
+                onlyInStock: false,
+                onlyBestsellers: false,
+                sortBy: null,
+                ratings: null,
+                platform: null
+            };
 
         default:
             throw new Error("Nema takvih igrica!");

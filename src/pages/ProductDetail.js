@@ -33,7 +33,7 @@ export const ProductDetail = () => {
         <main>
             <section>
                 <div className="relative flex items-center justify-center w-full mt-10 mb-5">
-                    <Link to={"/products"}><button className="absolute left-24 px-4 py-2 bg-zinc-200 text-zinc-800 rounded dark:bg-zinc-700 dark:text-white">← Nazad</button></Link>
+                    <Link to={"/products"}><button className="absolute hidden sm:block left-24 px-4 py-2 bg-zinc-200 text-zinc-800 rounded dark:bg-zinc-700 dark:text-white">← Nazad</button></Link>
                     <div className="text-center">
                         <h1 className="text-4xl font-bold text-zinc-900 dark:text-slate-200">
                             {product.name}
