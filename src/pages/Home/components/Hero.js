@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 export const Hero = () => {
     return (
-        <section className={"flex flex-col lg:flex-row dark:text-slate-100 items-center my-10"}>
+        <section className={"flex flex-col md:flex-row dark:text-slate-100 items-center my-10"}>
             <div className={"text my-5"}>
                 <h1 className={"text-5xl font-bold"}>Ultimativna prodavnica igara</h1>
                 <p className={"text-2xl my-7 px-1 dark:text-slate-300"}>GamesBuy je najpoznatija prodavnica igara u Podgorici sa sirokim izborom disk i digitalnih igara sa besplatnom dostavom i redovnim snizenjima.</p>

@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
 import {useTitle} from "../hooks/useTitle";
+import {useCart} from "../context/CartContext";
 
 export const ProductDetail = () => {
+    const [isInCart, setIsInCart] = useState(false);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [preorder, setPreorder] = useState(false);
     const {rating} = product;
+    const {cartList, addToCart, removeFromCart} = useCart();
 
-    useTitle(`${product.name} -`);
+    useTitle(`${product.name}`);
+
+    useEffect(() => {
+        setIsInCart(cartList.some(item => item.id === product.id));
+    }, [cartList, product.id]);
+
 
     useEffect(() => {
         if(rating===0){
@@ -93,7 +101,7 @@ export const ProductDetail = () => {
                             }
                         </p>
 
-                        {preorder ? (<button className={"inline-flex items-center my-2 py-3 pl-6 pr-6 text-lg font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>PREORDER</button>) : (<button className={"inline-flex items-center my-2 py-3 pl-6 pr-4 text-lg font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>Dodaj u korpu +</button>)}
+                        {preorder ? ( isInCart ? (<button onClick={() => removeFromCart(product)} className={"inline-flex items-center my-2 py-3 pl-6 pr-6 text-lg font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-600"}>OTKAZI PREORDER</button>) : (<button onClick={() => addToCart(product)} className={"inline-flex items-center my-2 py-3 pl-6 pr-6 text-lg font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>PREORDER</button>)) : (isInCart ? (<button onClick={() => removeFromCart(product)} className={"inline-flex items-center my-2 py-3 pl-6 pr-4 text-lg font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-600"}>Ukloni iz korpe -</button>) : (<button onClick={() => addToCart(product)} className={"inline-flex items-center my-2 py-3 pl-6 pr-4 text-lg font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>Dodaj u korpu +</button>))}
 
                         <p className="text-lg text-zinc-900 dark:text-slate-200">
                             {product.long_description}

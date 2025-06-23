@@ -1,9 +1,21 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {useCart} from "../../context/CartContext";
 
 export const ProductCard = ({product}) => {
     const [preorder, setPreorder] = useState(false);
+    const [isInCart, setIsInCart] = useState(false);
+    const {cartList, addToCart, removeFromCart} = useCart();
     const {id, name, overview, poster, price, rating, best_seller, platform} = product;
+
+    function handleAdd(product){
+        addToCart(product);
+    }
+
+    useEffect(() => {
+        setIsInCart(cartList.some(item => item.id === product.id));
+    }, [cartList, product.id]);
+
 
     useEffect(() => {
         if(rating===0){
@@ -42,8 +54,7 @@ export const ProductCard = ({product}) => {
                     <span className={"text-2xl dark:text-zinc-200"}>
                         <span>€</span> <span>{price}</span>
                     </span>
-                    {preorder ? (<button className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>PREORDER</button>) : (<button className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>Dodaj u korpu</button>)}
-                   {/* <button className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700"}>Ukloni iz korpe</button>*/}
+                    {preorder ? (isInCart? (<button onClick={() => removeFromCart(product)} className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-600"}>OTKAZI PREORDER</button>) : (<button onClick={() => addToCart(product)} className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>PREORDER</button>)) : (isInCart ? (<button onClick={() => removeFromCart(product)} className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-600"}>Ukloni iz korpe</button>) : (<button onClick={() => handleAdd(product)} className={"inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-yellow-600 rounded-lg hover:bg-amber-600"}>Dodaj u korpu</button>))}
                 </p>
             </div>
         </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const DropdownLoggedOut = ({setDropdown}) => {
     return (
         <div id="dropdownAvatar"
-             className="select-none absolute top-12 right-80 z-10 w-44 bg-white rounded divide-y divide-zinc-100 shadow dark:bg-zinc-700 dark:divide-zinc-600">
+             className="select-none absolute top-12 2xl:right-80 right-0 z-10 w-44 bg-white rounded divide-y divide-zinc-100 shadow dark:bg-zinc-700 dark:divide-zinc-600">
             <ul className="py-1 text-sm text-zinc-700 dark:text-white" aria-labelledby="dropdownUserAvatarButton">
                 <li>
                     <Link to="/products"

@@ -12,7 +12,7 @@ export const ProductsList = () => {
     const [show, setShow] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
-    useTitle("Igre -");
+    useTitle("Igre");
 
     const location = useLocation();
     const searchTerm = new URLSearchParams(location.search).get("q") || "";
